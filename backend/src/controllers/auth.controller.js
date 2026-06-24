@@ -56,3 +56,31 @@ export const loginAdmin = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
+
+export const updateAdminSettings = async (req, res) => {
+  try {
+    const { name, password } = req.body;
+    
+    const updates = {};
+    if (name) updates.name = name;
+    if (password) updates.password = password;
+
+    if (Object.keys(updates).length === 0) {
+      return res.status(400).json({ message: 'No updates provided' });
+    }
+
+    const { data, error } = await supabase
+      .from('Admin')
+      .update(updates)
+      .eq('id', req.user.id)
+      .select()
+      .single();
+
+    if (error) throw error;
+
+    res.json({ message: 'Admin settings updated successfully', data });
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
