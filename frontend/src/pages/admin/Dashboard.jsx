@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import supabase from '../../services/supabase';
 import { Users, Briefcase, FileText, Activity } from 'lucide-react';
 import useRealtimeSync from '../../hooks/useRealtimeSync';
+import useAuthStore from '../../store/authStore';
+import illustration from '../../assets/illustration.png';
 
 export default function AdminDashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [refreshTrigger, setRefreshTrigger] = useState(0);
+  const { user } = useAuthStore();
 
   useRealtimeSync('Candidate', () => setRefreshTrigger(prev => prev + 1));
   useRealtimeSync('Client', () => setRefreshTrigger(prev => prev + 1));
@@ -56,13 +59,36 @@ export default function AdminDashboard() {
 
   const { metrics, recentActivities } = data || { metrics: {}, recentActivities: [] };
 
+  function getGreeting() {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 17) return 'Good Afternoon';
+    return 'Good Evening';
+  }
+
   return (
     <div className="space-y-8 pb-12">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-extrabold text-on-surface tracking-tight">Admin Dashboard</h1>
-          <p className="text-outline mt-1.5">Overview of agency operations and recent activities.</p>
+      {/* Welcome Banner */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-primary px-6 py-4 flex items-center justify-between">
+        <div className="space-y-1 max-w-md relative z-10 text-left">
+          <h2 className="text-xl font-extrabold text-white leading-tight">
+            {getGreeting()}, {user?.name || 'Admin'}
+          </h2>
+          <p className="text-white/80 text-body-sm leading-relaxed">
+            Here's how your agency is running today.
+          </p>
         </div>
+
+        <div className="hidden md:block relative h-40 z-10 self-stretch -my-4 -mr-6">
+          <img
+            src={illustration}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </div>
+        
+        <div className="absolute right-0 top-0 w-72 h-72 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
+        <div className="absolute left-1/3 bottom-0 w-48 h-48 bg-white/5 rounded-full blur-xl -mb-16 pointer-events-none"></div>
       </div>
 
       {/* Metrics */}

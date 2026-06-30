@@ -3,6 +3,7 @@ import supabase from '../../services/supabase';
 import useAuthStore from '../../store/authStore';
 import { Building, Activity, Bell, Users } from 'lucide-react';
 import useRealtimeSync from '../../hooks/useRealtimeSync';
+import illustration from '../../assets/illustration.png';
 
 export default function EmployeeDashboard() {
   const { user } = useAuthStore();
@@ -52,13 +53,36 @@ export default function EmployeeDashboard() {
 
   const { metrics, recentActivities, selectedCandidates } = data || { metrics: {}, recentActivities: [], selectedCandidates: [] };
 
+  function getGreeting() {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'Good Morning';
+    if (hour < 17) return 'Good Afternoon';
+    return 'Good Evening';
+  }
+
   return (
     <div className="space-y-6 pb-12">
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-2">
-        <div>
-          <h1 className="text-4xl font-extrabold text-on-surface tracking-tight tracking-[-0.02em]">Welcome, {user?.name}</h1>
-          <p className="text-outline mt-2 text-lg">Here is an overview of your recruitment pipeline.</p>
+      {/* Welcome Banner */}
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-primary px-6 py-4 flex items-center justify-between mb-2">
+        <div className="space-y-1 max-w-md relative z-10 text-left">
+          <h2 className="text-xl font-extrabold text-white leading-tight">
+            {getGreeting()}, {user?.name || 'Employee'}
+          </h2>
+          <p className="text-white/80 text-body-sm leading-relaxed">
+            Here's how your recruitment pipeline is looking today.
+          </p>
         </div>
+
+        <div className="hidden md:block relative h-40 z-10 self-stretch -my-4 -mr-6">
+          <img
+            src={illustration}
+            alt=""
+            className="w-full h-full object-contain"
+          />
+        </div>
+        
+        <div className="absolute right-0 top-0 w-72 h-72 bg-white/10 rounded-full blur-2xl -mr-16 -mt-16 pointer-events-none"></div>
+        <div className="absolute left-1/3 bottom-0 w-48 h-48 bg-white/5 rounded-full blur-xl -mb-16 pointer-events-none"></div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[minmax(200px,auto)] gap-6">
