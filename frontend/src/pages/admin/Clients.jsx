@@ -59,7 +59,7 @@ export default function AdminClients() {
         .range(from, to);
 
       if (error) throw error;
-      
+
       setClients(data || []);
       setMeta({ page, limit: 10, total: count || 0, totalPages: Math.ceil((count || 0) / 10) || 1 });
     } catch (err) {
@@ -123,7 +123,7 @@ export default function AdminClients() {
   const handleOpenDuplicate = (client) => {
     setSelectedClient(null);
     setFormData({
-      name: client.name ? `${client.name} (Copy)` : '',
+      name: client.name ? `${client.name}` : '',
       recruitmentPositionRequired: '',
       contactName: client.contactName || '',
       email: client.email || '',
@@ -221,11 +221,11 @@ export default function AdminClients() {
 
   // Filter clients
   const filteredClients = clients.filter(client => {
-    const matchesSearch = 
+    const matchesSearch =
       client.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
       (client.contactName && client.contactName.toLowerCase().includes(searchTerm.toLowerCase())) ||
       (client.recruitmentPositionRequired && client.recruitmentPositionRequired.toLowerCase().includes(searchTerm.toLowerCase()));
-    
+
     const matchesPosition = positionFilter ? client.recruitmentPositionRequired === positionFilter : true;
 
     return matchesSearch && matchesPosition;
@@ -410,21 +410,21 @@ export default function AdminClients() {
                 ))}
               </tbody>
             </table>
-            
+
             {/* Pagination Controls */}
             {meta.totalPages > 1 && (
               <div className="p-4 border-t border-outline-variant/30 flex justify-between items-center bg-surface-container-lowest">
                 <span className="text-label-md text-outline font-medium">Page {meta.page} of {meta.totalPages}</span>
                 <div className="flex gap-2">
-                  <button 
-                    onClick={() => fetchClients(meta.page - 1)} 
+                  <button
+                    onClick={() => fetchClients(meta.page - 1)}
                     disabled={meta.page === 1}
                     className="btn-ghost px-4 py-1.5 disabled:opacity-40 disabled:cursor-not-allowed border border-outline-variant/50 hover:bg-surface-container-high transition-colors text-sm rounded-lg"
                   >
                     Previous
                   </button>
-                  <button 
-                    onClick={() => fetchClients(meta.page + 1)} 
+                  <button
+                    onClick={() => fetchClients(meta.page + 1)}
                     disabled={meta.page === meta.totalPages}
                     className="btn-ghost px-4 py-1.5 disabled:opacity-40 disabled:cursor-not-allowed border border-outline-variant/50 hover:bg-surface-container-high transition-colors text-sm rounded-lg"
                   >
