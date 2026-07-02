@@ -193,6 +193,21 @@ export default function AdminClients() {
         .select('*, employee:employeeId(name)')
         .single();
       if (error) throw error;
+
+      if (assigneeId && assigneeId !== selectedClient.employeeId) {
+        await supabase.from('ActivityLog').insert([{
+          action: 'Client Assigned',
+          details: `You have been assigned to client ${data.name}.`,
+          employeeId: assigneeId
+        }]);
+      } else if (!assigneeId && selectedClient.employeeId) {
+        await supabase.from('ActivityLog').insert([{
+          action: 'Client Unassigned',
+          details: `You have been unassigned from client ${data.name}.`,
+          employeeId: selectedClient.employeeId
+        }]);
+      }
+
       setClients(clients.map(c => c.id === selectedClient.id ? data : c));
       setIsAssignModalOpen(false);
     } catch (err) {

@@ -157,6 +157,15 @@ export default function Candidates() {
         const { data, error } = await supabase.from('Candidate').update(payload).eq('id', selected.id).select('*, selectedBy:selectedById(name)').single();
         if (error) throw error;
         setCandidates(candidates.map(c => c.id === selected.id ? data : c));
+        
+        if (payload.status && payload.status !== selected.status && user?.id) {
+          await supabase.from('ActivityLog').insert([{
+            action: 'Candidate Status Changed',
+            details: `Status of candidate ${selected.name} changed to ${payload.status}.`,
+            employeeId: user.id,
+            candidateId: selected.id
+          }]);
+        }
       } else {
         const { data, error } = await supabase.from('Candidate').insert([payload]).select('*, selectedBy:selectedById(name)').single();
         if (error) throw error;
@@ -219,6 +228,15 @@ export default function Candidates() {
         .single();
         
       if (error) throw error;
+      
+      if (user?.id) {
+        await supabase.from('ActivityLog').insert([{
+          action: isSelected ? 'Candidate Unselected' : 'Candidate Selected',
+          details: `You ${isSelected ? 'unselected' : 'selected'} candidate ${candidate.name}.`,
+          employeeId: user.id,
+          candidateId: candidate.id
+        }]);
+      }
       
       setCandidates(candidates.map(c => c.id === candidate.id ? data : c));
       if (selected && selected.id === candidate.id) {
