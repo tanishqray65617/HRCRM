@@ -77,4 +77,12 @@ This project was built using a modern, scalable, and fully serverless tech stack
 
 ---
 
-*Note: The source code for this project is kept private. Please reach out to me directly if you'd like a live demonstration or a technical walkthrough of the codebase!*
+## 🚀 Live Demo
+
+You can view the live deployment of this project here: [https://hrcrm-orcin.vercel.app/](https://hrcrm-orcin.vercel.app/)
+
+Feel free to explore the platform using the following dummy credentials:
+- **Admin Login**: `admin@gmail.com` | Password: `password123`
+- **Employee Login**: `employee@gmail.com` | Password: `password123`
+
+*(Note: Certain implementation details have been omitted from this repository to respect company confidentiality, but the core architecture and UI are fully functional).*
