@@ -77,4 +77,4 @@ This project was built using a modern, scalable, and fully serverless tech stack
 
 ---
 
-
+*Note: The source code for this project is kept private. Please reach out to me directly if you'd like a live demonstration or a technical walkthrough of the codebase!*
