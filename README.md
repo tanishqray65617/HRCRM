@@ -1,4 +1,5 @@
-<img width="949" height="263" alt="logo" src="https://github.com/user-attachments/assets/94a2660d-387a-4432-8a18-3a36d89683c5" />
+<img width="1381" height="447" alt="image" src="https://github.com/user-attachments/assets/63c37acc-e729-431c-b9d3-6baedc97bf87" />
+
 
 # HR-CRM Platform
 
