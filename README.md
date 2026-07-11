@@ -1,8 +1,10 @@
+<img width="949" height="263" alt="logo" src="https://github.com/user-attachments/assets/94a2660d-387a-4432-8a18-3a36d89683c5" />
+
 # HR-CRM Platform
 
 > A centralized Recruitment and Workforce Management platform designed to streamline operations between HR Agencies, Recruiters, and Job Seekers.
+<img width="1765" height="946" alt="image" src="https://github.com/user-attachments/assets/22cbc377-b609-4182-92f2-1f174f7732f7" />
 
-![HR-CRM Hero Banner](./placeholder-hero-image.png) *(Note: Replace with your actual hero screenshot)*
 
 ## Overview
 
@@ -55,14 +57,14 @@ This project was built using a modern, scalable, and fully serverless tech stack
 
 ## Application Showcase
 
-*(Note: Add screenshots of your application in action below to show recruiters what the app looks like!)*
-
 ### Admin Dashboard
-![Admin Dashboard](./placeholder-admin-dashboard.png)
+<img width="1495" height="852" alt="image" src="https://github.com/user-attachments/assets/93dd5dfd-2a2f-4a80-8285-65d5bce4a44f" />
+
 *Provides a high-level overview of clients, recruiters, and overall placements.*
 
 ### Candidate Pipeline
-![Candidate Pipeline](./placeholder-pipeline.png)
+<img width="1492" height="847" alt="image" src="https://github.com/user-attachments/assets/68957b79-8476-4902-9505-341d83187ac7" />
+
 *Recruiters can easily update the status of candidates as they move through the interview process.*
 
 ---
@@ -74,4 +76,4 @@ This project was built using a modern, scalable, and fully serverless tech stack
 
 ---
 
-*Note: The source code for this project is kept private. Please reach out to me directly if you'd like a live demonstration or a technical walkthrough of the codebase!*
+
