@@ -4,6 +4,17 @@
 # HR-CRM Platform
 
 > A centralized Recruitment and Workforce Management platform designed to streamline operations between HR Agencies, Recruiters, and Job Seekers.
+
+## 🚀 Live Demo
+
+You can view the live deployment of this project here: [https://hrcrm-orcin.vercel.app/](https://hrcrm-orcin.vercel.app/)
+
+Feel free to explore the platform using the following dummy credentials:
+- **Admin Login**: `admin@gmail.com` | Password: `password123`
+- **Employee Login**: `employee@gmail.com` | Password: `password123`
+
+*(Note: Certain implementation details have been omitted from this repository to respect company confidentiality, but the core architecture and UI are fully functional).*
+
 <img width="1765" height="946" alt="image" src="https://github.com/user-attachments/assets/22cbc377-b609-4182-92f2-1f174f7732f7" />
 
 
@@ -74,15 +85,3 @@ This project was built using a modern, scalable, and fully serverless tech stack
 
 - **Serverless Architecture**: By leveraging Supabase and its Native SDK, the need for a boilerplate Express.js server was eliminated, drastically reducing latency and scaling issues.
 - **Row Level Security (RLS)**: Database policies are strictly enforced at the Postgres level, ensuring that Employees can only see their assigned clients, and Candidates can only view their own data, preventing unauthorized access.
-
----
-
-## 🚀 Live Demo
-
-You can view the live deployment of this project here: [https://hrcrm-orcin.vercel.app/](https://hrcrm-orcin.vercel.app/)
-
-Feel free to explore the platform using the following dummy credentials:
-- **Admin Login**: `admin@gmail.com` | Password: `password123`
-- **Employee Login**: `employee@gmail.com` | Password: `password123`
-
-*(Note: Certain implementation details have been omitted from this repository to respect company confidentiality, but the core architecture and UI are fully functional).*
